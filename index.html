@@ -31,12 +31,13 @@
             background-color: var(--dark-bg);
             color: var(--white);
             line-height: 1.6;
+            padding-bottom: 20px;
         }
 
         /* Header */
         header {
             background-color: rgba(18, 18, 18, 0.95);
-            padding: 1.2rem 2rem;
+            padding: 1rem;
             position: fixed;
             width: 100%;
             top: 0;
@@ -48,57 +49,57 @@
             font-size: 1.5rem;
             font-weight: 600;
             color: var(--primary-orange);
+            text-align: center;
         }
 
         /* Hero Section */
         .hero {
-    height: 60vh;
-    margin-top: 80px;
-    background-image: 
-        linear-gradient(rgba(255, 102, 0, 0.6), rgba(18, 18, 18, 0.7)), 
-        url('skate.jpg');
-    background-size: cover;
-    background-position: center;
-    /* resto do código permanece igual */
+            height: 50vh;
+            margin-top: 60px;
+            background-image: 
+                linear-gradient(rgba(255, 102, 0, 0.6), rgba(18, 18, 18, 0.7)), 
+                url('skate.jpg');
+            background-size: cover;
+            background-position: center;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 2rem;
+            padding: 1.5rem;
             position: relative;
         }
 
         .hero h1 {
-            font-size: 2.8rem;
+            font-size: 1.8rem;
             font-weight: 600;
             margin-bottom: 1rem;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         .hero p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin-bottom: 2rem;
+            font-size: 1rem;
+            max-width: 100%;
+            margin-bottom: 1.5rem;
             color: var(--light-gray);
         }
 
         /* Search Bar */
         .search-container {
             width: 100%;
-            max-width: 600px;
+            max-width: 100%;
             margin: 0 auto;
             position: relative;
         }
 
         .search-bar {
             width: 100%;
-            padding: 1rem 1.5rem 1rem 3rem;
+            padding: 0.8rem 1rem 0.8rem 2.5rem;
             border-radius: 50px;
             border: none;
             background-color: var(--search-bg);
             color: var(--white);
-            font-size: 1rem;
+            font-size: 0.9rem;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
@@ -116,25 +117,25 @@
 
         /* Categories Navigation */
         .categories-nav {
-    background-color: var(--card-bg);
-    padding: 1rem 2rem;
-    position: sticky;
-    top: 80px;
-    z-index: 800; /* Reduzi o z-index para ficar abaixo do hero */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-}
+            background-color: var(--card-bg);
+            padding: 0.8rem 1rem;
+            position: sticky;
+            top: 60px;
+            z-index: 800;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
 
-.categories-list {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    list-style: none;
-    overflow-x: auto;
-    padding: 0.5rem 0;
-    scrollbar-width: none;
-    position: relative; /* Adicionado */
-    z-index: 1; /* Adicionado */
-}
+        .categories-list {
+            display: flex;
+            justify-content: flex-start;
+            gap: 0.8rem;
+            list-style: none;
+            overflow-x: auto;
+            padding: 0.5rem 0;
+            scrollbar-width: none;
+            position: relative;
+            z-index: 1;
+        }
 
         .categories-list::-webkit-scrollbar {
             display: none;
@@ -144,10 +145,13 @@
             font-weight: 600;
             color: var(--light-gray);
             cursor: pointer;
-            padding: 0.5rem 1rem;
+            padding: 0.5rem 0.8rem;
             border-radius: 50px;
             transition: all 0.3s ease;
             white-space: nowrap;
+            font-size: 0.9rem;
+            position: relative;
+            z-index: 2;
         }
 
         .categories-list li.active,
@@ -158,45 +162,29 @@
 
         /* Products Section */
         .container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1.5rem;
+            width: 100%;
+            margin: 1.5rem auto;
+            padding: 0 1rem;
         }
 
         .category-section {
-            margin-bottom: 4rem;
+            margin-bottom: 2.5rem;
+            scroll-margin-top: 120px;
         }
 
         .category-title {
-            font-size: 1.8rem;
+            font-size: 1.4rem;
             font-weight: 600;
-            margin-bottom: 1.5rem;
-            padding-left: 1rem;
+            margin-bottom: 1rem;
+            padding-left: 0.8rem;
             border-left: 4px solid var(--primary-orange);
         }
 
-        .products-carousel {
-            display: flex;
-            overflow-x: auto;
-            gap: 1.5rem;
-            padding: 1rem;
-            scrollbar-width: thin;
-            scrollbar-color: var(--primary-orange) var(--dark-bg);
-            scroll-behavior: smooth;
-        }
-
-        .products-carousel::-webkit-scrollbar {
-            height: 8px;
-        }
-
-        .products-carousel::-webkit-scrollbar-track {
-            background: var(--dark-bg);
-            border-radius: 10px;
-        }
-
-        .products-carousel::-webkit-scrollbar-thumb {
-            background: var(--primary-orange);
-            border-radius: 10px;
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1rem;
+            padding: 0.5rem 0;
         }
 
         .product-card {
@@ -205,11 +193,12 @@
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            min-width: 250px;
-            flex-shrink: 0;
             opacity: 0;
             transform: translateY(20px);
             animation: fadeInUp 0.6s forwards;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
 
         .product-card:hover {
@@ -219,14 +208,14 @@
 
         .product-image {
             width: 100%;
-            height: 200px;
+            height: 140px;
             overflow: hidden;
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
             background-color: #fff;
-            padding: 15px;
+            padding: 10px;
         }
 
         .product-image img {
@@ -241,33 +230,36 @@
         }
 
         .product-info {
-            padding: 1.2rem;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
         }
 
         .product-title {
-            font-size: 1rem;
+            font-size: 0.85rem;
             font-weight: 400;
             color: var(--light-gray);
-            margin-bottom: 0.8rem;
-            height: 50px;
+            margin-bottom: 0.6rem;
             overflow: hidden;
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
+            min-height: 40px;
         }
 
         .product-price {
-            font-size: 1.4rem;
+            font-size: 1.1rem;
             font-weight: 600;
             color: var(--white);
-            margin-bottom: 1.2rem;
+            margin-bottom: 0.8rem;
         }
 
         .btn {
             display: inline-block;
             background-color: var(--primary-orange);
             color: var(--white);
-            padding: 0.8rem 1.5rem;
+            padding: 0.6rem 1rem;
             border-radius: 6px;
             text-decoration: none;
             font-weight: 600;
@@ -276,6 +268,8 @@
             border: none;
             cursor: pointer;
             width: 100%;
+            font-size: 0.85rem;
+            margin-top: auto;
         }
 
         .btn:hover {
@@ -284,56 +278,30 @@
             box-shadow: 0 0 15px rgba(255, 102, 0, 0.4);
         }
 
-        /* Carousel Navigation */
-        .carousel-nav {
-            display: flex;
-            justify-content: flex-end;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .carousel-btn {
-            background-color: var(--card-bg);
-            color: var(--white);
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .carousel-btn:hover {
-            background-color: var(--primary-orange);
-        }
-
         /* Footer */
         footer {
             background-color: #0f0f0f;
-            padding: 3rem 2rem;
-            margin-top: 4rem;
+            padding: 2rem 1rem;
+            margin-top: 3rem;
             text-align: center;
         }
 
         .disclaimer {
             color: var(--text-gray);
-            max-width: 800px;
-            margin: 0 auto 2rem;
-            font-size: 0.9rem;
+            max-width: 100%;
+            margin: 0 auto 1.5rem;
+            font-size: 0.8rem;
         }
 
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 1.5rem;
+            gap: 1.2rem;
         }
 
         .social-links a {
             color: var(--white);
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             transition: color 0.3s ease, transform 0.3s ease;
         }
 
@@ -354,37 +322,86 @@
             }
         }
 
+        /* Mobile Navigation */
+        .mobile-category-select {
+            display: none;
+            width: 100%;
+            padding: 0.8rem;
+            margin: 1rem 0;
+            background-color: var(--card-bg);
+            color: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
+            .hero {
+                height: 45vh;
+                margin-top: 60px;
+                padding: 1rem;
+            }
+            
             .hero h1 {
-                font-size: 2rem;
+                font-size: 1.6rem;
             }
             
             .hero p {
-                font-size: 1rem;
+                font-size: 0.9rem;
             }
             
             .categories-list {
-                gap: 1rem;
-                justify-content: flex-start;
+                gap: 0.6rem;
             }
             
             .categories-list li {
-                padding: 0.5rem;
+                padding: 0.4rem 0.7rem;
+                font-size: 0.8rem;
             }
             
-            .product-card {
-                min-width: 220px;
+            .container {
+                padding: 0 0.8rem;
+            }
+            
+            .category-title {
+                font-size: 1.3rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+                gap: 0.8rem;
+            }
+            
+            .product-image {
+                height: 130px;
+            }
+            
+            .product-title {
+                font-size: 0.8rem;
+            }
+            
+            .product-price {
+                font-size: 1rem;
+            }
+            
+            /* Mobile category selector */
+            .categories-nav {
+                display: none;
+            }
+            
+            .mobile-category-select {
+                display: block;
             }
         }
 
         @media (max-width: 480px) {
             .hero {
-                height: 50vh;
+                height: 40vh;
             }
             
             .hero h1 {
-                font-size: 1.8rem;
+                font-size: 1.4rem;
             }
             
             .logo {
@@ -392,21 +409,41 @@
             }
             
             .category-title {
-                font-size: 1.5rem;
+                font-size: 1.2rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.7rem;
             }
             
             .product-card {
-                min-width: 200px;
+                min-width: auto;
             }
             
             .product-image {
-                height: 150px;
+                height: 120px;
             }
-            /* Garantir que o texto das categorias fique visível */
-.categories-list li {
-    position: relative;
-    z-index: 2;
-}
+            
+            .product-info {
+                padding: 0.8rem;
+            }
+            
+            .product-title {
+                font-size: 0.78rem;
+                min-height: 36px;
+            }
+            
+            .btn {
+                padding: 0.5rem 0.8rem;
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -418,12 +455,21 @@
     <section class="hero">
         <h1>Kauã FX – Produtos</h1>
         <p>Produtos que recomendo</p>
-        
+
         <div class="search-container">
             <i class="fas fa-search search-icon"></i>
             <input type="text" class="search-bar" placeholder="Pesquisar produtos..." id="search-input">
         </div>
     </section>
+
+    <!-- Mobile Category Selector -->
+    <select class="mobile-category-select" id="mobile-category-select">
+        <option value="all" selected>Todos os Produtos</option>
+        <option value="eletronicos">Eletrônicos</option>
+        <option value="roupas">Roupas</option>
+        <option value="equipamento">Meus Equipamentos</option>
+        <option value="setup">Meu Setup</option>
+    </select>
 
     <nav class="categories-nav">
         <ul class="categories-list" id="categories-list">
@@ -438,45 +484,29 @@
     <div class="container">
         <section class="category-section" id="eletronicos-section">
             <h2 class="category-title">Eletrônicos</h2>
-            <div class="products-carousel" id="eletronicos-carousel">
+            <div class="products-grid" id="eletronicos-carousel">
                 <!-- Produtos serão carregados via JavaScript -->
-            </div>
-            <div class="carousel-nav">
-                <button class="carousel-btn" onclick="scrollCarousel('eletronicos-carousel', -300)"><i class="fas fa-chevron-left"></i></button>
-                <button class="carousel-btn" onclick="scrollCarousel('eletronicos-carousel', 300)"><i class="fas fa-chevron-right"></i></button>
             </div>
         </section>
 
         <section class="category-section" id="roupas-section">
             <h2 class="category-title">Roupas</h2>
-            <div class="products-carousel" id="roupas-carousel">
+            <div class="products-grid" id="roupas-carousel">
                 <!-- Produtos serão carregados via JavaScript -->
-            </div>
-            <div class="carousel-nav">
-                <button class="carousel-btn" onclick="scrollCarousel('roupas-carousel', -300)"><i class="fas fa-chevron-left"></i></button>
-                <button class="carousel-btn" onclick="scrollCarousel('roupas-carousel', 300)"><i class="fas fa-chevron-right"></i></button>
             </div>
         </section>
 
         <section class="category-section" id="equipamento-section">
             <h2 class="category-title">Meu Equipamento</h2>
-            <div class="products-carousel" id="equipamento-carousel">
+            <div class="products-grid" id="equipamento-carousel">
                 <!-- Produtos serão carregados via JavaScript -->
-            </div>
-            <div class="carousel-nav">
-                <button class="carousel-btn" onclick="scrollCarousel('equipamento-carousel', -300)"><i class="fas fa-chevron-left"></i></button>
-                <button class="carousel-btn" onclick="scrollCarousel('equipamento-carousel', 300)"><i class="fas fa-chevron-right"></i></button>
             </div>
         </section>
 
         <section class="category-section" id="setup-section">
             <h2 class="category-title">Meu Setup</h2>
-            <div class="products-carousel" id="setup-carousel">
+            <div class="products-grid" id="setup-carousel">
                 <!-- Produtos serão carregados via JavaScript -->
-            </div>
-            <div class="carousel-nav">
-                <button class="carousel-btn" onclick="scrollCarousel('setup-carousel', -300)"><i class="fas fa-chevron-left"></i></button>
-                <button class="carousel-btn" onclick="scrollCarousel('setup-carousel', 300)"><i class="fas fa-chevron-right"></i></button>
             </div>
         </section>
     </div>
@@ -490,7 +520,7 @@
     </footer>
 
     <script>
-        // Dados dos produtos (em um cenário real, isso viria de um arquivo JSON externo)
+        // Dados dos produtos
         const productsData = {
             "products": [
                 {
@@ -600,7 +630,7 @@
                 },
                 {
                     "title": "Mouse para jogo Infokit X-Soldado GM-700 preto",
-                    "image": "https://http2.mlstatic.com/D_NQ_NP_764216-MLU77878853757_072024-O.webp",
+                    "image": "https://http2.mlstatic.com/D_NQ_NP_764216-MLU77878853769_072024-O.webp",
                     "price": "R$ 44",
                     "affiliateLink": "https://mercadolivre.com/sec/2fMcubW",
                     "category": "setup"
@@ -701,17 +731,17 @@
                 'setup': document.getElementById('setup-carousel')
             };
 
-            // Limpar os carrosséis antes de renderizar
+            // Limpar os grids antes de renderizar
             for (const category in categories) {
                 categories[category].innerHTML = '';
             }
 
-            // Adicionar produtos aos seus respectivos carrosséis
+            // Adicionar produtos aos seus respectivos grids
             productsData.products.forEach((product, index) => {
                 const productCard = document.createElement('div');
                 productCard.className = 'product-card';
                 productCard.style.animationDelay = `${index * 0.1}s`;
-                
+
                 productCard.innerHTML = `
                     <div class="product-image">
                         <img src="${product.image}" alt="${product.title}" loading="lazy">
@@ -722,7 +752,7 @@
                         <a href="${product.affiliateLink}" target="_blank" class="btn">Ver no Mercado Livre</a>
                     </div>
                 `;
-                
+
                 if (categories[product.category]) {
                     categories[product.category].appendChild(productCard);
                 }
@@ -732,7 +762,7 @@
         // Função para filtrar produtos pela pesquisa
         function filterProducts() {
             const searchTerm = document.getElementById('search-input').value.toLowerCase();
-            
+
             const categories = {
                 'eletronicos': document.getElementById('eletronicos-carousel'),
                 'roupas': document.getElementById('roupas-carousel'),
@@ -740,18 +770,18 @@
                 'setup': document.getElementById('setup-carousel')
             };
 
-            // Limpar os carrosséis antes de renderizar
+            // Limpar os grids antes de renderizar
             for (const category in categories) {
                 categories[category].innerHTML = '';
             }
 
-            // Filtrar e adicionar produtos aos seus respectivos carrosséis
+            // Filtrar e adicionar produtos aos seus respectivos grids
             productsData.products.forEach((product, index) => {
                 if (product.title.toLowerCase().includes(searchTerm)) {
                     const productCard = document.createElement('div');
                     productCard.className = 'product-card';
                     productCard.style.animationDelay = `${index * 0.1}s`;
-                    
+
                     productCard.innerHTML = `
                         <div class="product-image">
                             <img src="${product.image}" alt="${product.title}" loading="lazy">
@@ -762,7 +792,7 @@
                             <a href="${product.affiliateLink}" target="_blank" class="btn">Ver no Mercado Livre</a>
                         </div>
                     `;
-                    
+
                     if (categories[product.category]) {
                         categories[product.category].appendChild(productCard);
                     }
@@ -782,58 +812,49 @@
             }
         }
 
-        // Função para navegar nos carrosséis
-        function scrollCarousel(carouselId, scrollAmount) {
-    const carousel = document.getElementById(carouselId);
-    carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-}
-
-// Inicializar quando o DOM estiver carregado
-document.addEventListener('DOMContentLoaded', function() {
-    renderProducts();
-    
-    // Adicionar evento de pesquisa
-    document.getElementById('search-input').addEventListener('input', filterProducts);
-    
-    // Adicionar eventos de clique nas categorias
-    const categoryItems = document.querySelectorAll('.categories-list li');
-    const headerHeight = document.querySelector('header').offsetHeight;
-    const categoriesNavHeight = document.querySelector('.categories-nav').offsetHeight;
-    const totalOffset = headerHeight + categoriesNavHeight;
-    
-    categoryItems.forEach(item => {
-        item.addEventListener('click', function() {
-            // Remover classe active de todos os itens
-            categoryItems.forEach(i => i.classList.remove('active'));
-            
-            // Adicionar classe active ao item clicado
-            this.classList.add('active');
-            
-            // Rolar até a categoria selecionada
-            const category = this.getAttribute('data-category');
+        // Função para navegar para uma categoria
+        function scrollToCategory(category) {
             if (category !== 'all') {
                 const section = document.getElementById(`${category}-section`);
                 if (section) {
-                    // Calcular a posição considerando os elementos fixos
-                    const elementPosition = section.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - totalOffset;
-                    
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: 'smooth'
-                    });
+                    section.scrollIntoView({ behavior: 'smooth' });
                 }
             } else {
-                // Para "Todos", rolar para depois do hero
-                const heroHeight = document.querySelector('.hero').offsetHeight;
-                window.scrollTo({ 
-                    top: heroHeight - headerHeight, 
-                    behavior: 'smooth' 
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        // Inicializar quando o DOM estiver carregado
+        document.addEventListener('DOMContentLoaded', function() {
+            renderProducts();
+            
+            // Adicionar evento de pesquisa
+            document.getElementById('search-input').addEventListener('input', filterProducts);
+            
+            // Adicionar eventos de clique nas categorias (desktop)
+            const categoryItems = document.querySelectorAll('.categories-list li');
+            categoryItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    // Remover classe active de todos os itens
+                    categoryItems.forEach(i => i.classList.remove('active'));
+                    
+                    // Adicionar classe active ao item clicado
+                    this.classList.add('active');
+                    
+                    // Rolar até a categoria selecionada
+                    const category = this.getAttribute('data-category');
+                    scrollToCategory(category);
+                });
+            });
+            
+            // Adicionar evento para o seletor mobile
+            const mobileSelect = document.getElementById('mobile-category-select');
+            if (mobileSelect) {
+                mobileSelect.addEventListener('change', function() {
+                    scrollToCategory(this.value);
                 });
             }
         });
-    });
-});
     </script>
 </body>
 </html>
