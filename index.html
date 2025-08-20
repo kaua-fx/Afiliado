@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kauã FX</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --dark-bg: #121212;
+            --card-bg: #1e1e1e;
+            --primary-orange: #ff6600;
+            --primary-orange-hover: #ff8533;
+            --white: #ffffff;
+            --light-gray: #cccccc;
+            --text-gray: #b0b0b0;
+            --search-bg: #2a2a2a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--white);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background-color: rgba(18, 18, 18, 0.95);
+            padding: 1.2rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-orange);
+        }
+
+        /* Hero Section */
+        .hero {
+    height: 60vh;
+    margin-top: 80px;
+    background-image: 
+        linear-gradient(rgba(255, 102, 0, 0.6), rgba(18, 18, 18, 0.7)), 
+        url('skate.jpg');
+    background-size: cover;
+    background-position: center;
+    /* resto do código permanece igual */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 2rem;
+            color: var(--light-gray);
+        }
+
+        /* Search Bar */
+        .search-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 1rem 1.5rem 1rem 3rem;
+            border-radius: 50px;
+            border: none;
+            background-color: var(--search-bg);
+            color: var(--white);
+            font-size: 1rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .search-bar:focus {
+            outline: 2px solid var(--primary-orange);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--light-gray);
+        }
+
+        /* Categories Navigation */
+        .categories-nav {
+    background-color: var(--card-bg);
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 80px;
+    z-index: 800; /* Reduzi o z-index para ficar abaixo do hero */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.categories-list {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    list-style: none;
+    overflow-x: auto;
+    padding: 0.5rem 0;
+    scrollbar-width: none;
+    position: relative; /* Adicionado */
+    z-index: 1; /* Adicionado */
+}
+
+        .categories-list::-webkit-scrollbar {
+            display: none;
+        }
+
+        .categories-list li {
+            font-weight: 600;
+            color: var(--light-gray);
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .categories-list li.active,
+        .categories-list li:hover {
+            background-color: var(--primary-orange);
+            color: var(--white);
+        }
+
+        /* Products Section */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .category-section {
+            margin-bottom: 4rem;
+        }
+
+        .category-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            padding-left: 1rem;
+            border-left: 4px solid var(--primary-orange);
+        }
+
+        .products-carousel {
+            display: flex;
+            overflow-x: auto;
+            gap: 1.5rem;
+            padding: 1rem;
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary-orange) var(--dark-bg);
+            scroll-behavior: smooth;
+        }
+
+        .products-carousel::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .products-carousel::-webkit-scrollbar-track {
+            background: var(--dark-bg);
+            border-radius: 10px;
+        }
+
+        .products-carousel::-webkit-scrollbar-thumb {
+            background: var(--primary-orange);
+            border-radius: 10px;
+        }
+
+        .product-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            min-width: 250px;
+            flex-shrink: 0;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s forwards;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+            padding: 15px;
+        }
+
+        .product-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 1.2rem;
+        }
+
+        .product-title {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--light-gray);
+            margin-bottom: 0.8rem;
+            height: 50px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+        .product-price {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 1.2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-orange);
+            color: var(--white);
+            padding: 0.8rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-orange-hover);
+            transform: scale(1.03);
+            box-shadow: 0 0 15px rgba(255, 102, 0, 0.4);
+        }
+
+        /* Carousel Navigation */
+        .carousel-nav {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .carousel-btn {
+            background-color: var(--card-bg);
+            color: var(--white);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-btn:hover {
+            background-color: var(--primary-orange);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0f0f0f;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        .disclaimer {
+            color: var(--text-gray);
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            font-size: 0.9rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            color: var(--white);
+            font-size: 1.5rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-orange);
+            transform: translateY(-3px);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .categories-list {
+                gap: 1rem;
+                justify-content: flex-start;
+            }
+            
+            .categories-list li {
+                padding: 0.5rem;
+            }
+            
+            .product-card {
+                min-width: 220px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                height: 50vh;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .logo {
+                font-size: 1.2rem;
+            }
+            
+            .category-title {
+                font-size: 1.5rem;
+            }
+            
+            .product-card {
+                min-width: 200px;
+            }
+            
+            .product-image {
+                height: 150px;
+            }
+            /* Garantir que o texto das categorias fique visível */
+.categories-list li {
+    position: relative;
+    z-index: 2;
+}
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Kauã FX</div>
+    </header>
+
+    <section class="hero">
+        <h1>Kauã FX – Produtos</h1>
+        <p>Produtos que recomendo</p>
+        
+        <div class="search-container">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" class="search-bar" placeholder="Pesquisar produtos..." id="search-input">
+        </div>
+    </section>
+
+    <nav class="categories-nav">
+        <ul class="categories-list" id="categories-list">
+            <li class="active" data-category="all">Todos</li>
+            <li data-category="eletronicos">Eletrônicos</li>
+            <li data-category="roupas">Roupas</li>
+            <li data-category="equipamento">Meus Equipamentos</li>
+            <li data-category="setup">Meu Setup</li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section class="category-section" id="eletronicos-section">
+            <h2 class="category-title">Eletrônicos</h2>
+            <div class="products-carousel" id="eletronicos-carousel">
+                <!-- Produtos serão carregados via JavaScript -->
+            </div>
+            <div class="carousel-nav">
+                <button class="carousel-btn" onclick="scrollCarousel('eletronicos-carousel', -300)"><i class="fas fa-chevron-left"></i></button>
+                <button class="carousel-btn" onclick="scrollCarousel('eletronicos-carousel', 300)"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </section>
+
+        <section class="category-section" id="roupas-section">
+            <h2 class="category-title">Roupas</h2>
+            <div class="products-carousel" id="roupas-carousel">
+                <!-- Produtos serão carregados via JavaScript -->
+            </div>
+            <div class="carousel-nav">
+                <button class="carousel-btn" onclick="scrollCarousel('roupas-carousel', -300)"><i class="fas fa-chevron-left"></i></button>
+                <button class="carousel-btn" onclick="scrollCarousel('roupas-carousel', 300)"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </section>
+
+        <section class="category-section" id="equipamento-section">
+            <h2 class="category-title">Meu Equipamento</h2>
+            <div class="products-carousel" id="equipamento-carousel">
+                <!-- Produtos serão carregados via JavaScript -->
+            </div>
+            <div class="carousel-nav">
+                <button class="carousel-btn" onclick="scrollCarousel('equipamento-carousel', -300)"><i class="fas fa-chevron-left"></i></button>
+                <button class="carousel-btn" onclick="scrollCarousel('equipamento-carousel', 300)"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </section>
+
+        <section class="category-section" id="setup-section">
+            <h2 class="category-title">Meu Setup</h2>
+            <div class="products-carousel" id="setup-carousel">
+                <!-- Produtos serão carregados via JavaScript -->
+            </div>
+            <div class="carousel-nav">
+                <button class="carousel-btn" onclick="scrollCarousel('setup-carousel', -300)"><i class="fas fa-chevron-left"></i></button>
+                <button class="carousel-btn" onclick="scrollCarousel('setup-carousel', 300)"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p class="disclaimer">Este site não é uma loja oficial. Todos os produtos são redirecionados para o Mercado Livre via link de afiliado.</p>
+        <div class="social-links">
+            <a href="https://www.instagram.com/kaua._fx_/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@kaua._fx" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        // Dados dos produtos (em um cenário real, isso viria de um arquivo JSON externo)
+        const productsData = {
+            "products": [
+                {
+                    "title": "Controle Playstation 5 sem fio Dualsense Ps5 Cor Branco/Preto",
+                    "image": "https://http2.mlstatic.com/D_NQ_NP_852060-MLA84850736189_052025-O.webp",
+                    "price": "R$ 429",
+                    "affiliateLink": "https://mercadolivre.com/sec/1u6wU7j",
+                    "category": "eletronicos"
+                },
+                {
+                    "title": "Fone De Ouvido Com Mic Sem fio Wave Beam 2 JBL Preto",
+                    "image": "https://http2.mlstatic.com/D_NQ_NP_876904-MLA80727560288_112024-O.webp",
+                    "price": "R$ 258",
+                    "affiliateLink": "https://mercadolivre.com/sec/29bzTaF",
+                    "category": "eletronicos"
+                },
+                {
+                    "title": "Mouse Gamer Redragon Cobra Rgb Preto Preto",
+                    "image": "https://http2.mlstatic.com/D_NQ_NP_852849-MLU78265889569_082024-O.webp",
+                    "price": "R$ 129",
+                    "affiliateLink": "https://mercadolivre.com/sec/1xSEHYi",
+                    "category": "eletronicos"
+                },
+                {
+                    "title": "Carregador Portátil Samsung 3 Portas 20000mah Ep-p4520 Bege",
+                    "image": "https://http2.mlstatic.com/D_NQ_NP_779887-MLU78048037375_072024-O.webp",
+                    "price": "R$ 243",
+                    "affiliateLink": "https://mercadolivre.com/sec/2VpE8ED",
+                    "category": "eletronicos"
+                },
+                {
+                    "title": "Blusa Moletom Hell Boy Lil Peep Triste Rosto Trap",
+                    "image": "https://http2.mlstatic.com/D_NQ_NP_796395-MLB43832634608_102020-O-blusa-moletom-hell-boy-lil-peep-triste-rosto-trap.webp",
+                    "price": "R$ 69",
+                    "affiliateLink": "https://mercadolivre.com/sec/2ckRuq9",
+                    "category": "roupas"
+                },
+                {
+                    "title": "Camisa Oversized Masculina Over Gola Alta Mangona",
+                    "image": "https://http2.mlstatic.com/D_NQ_NP_928701-MLB84764675369_052025-O-camisa-oversized-masculina-over-gola-alta-mangona.webp",
+                    "price": "R$ 92",
+                    "affiliateLink": "https://mercadolivre.com/sec/2CgT487",
+                    "category": "roupas"
+                },
+                {
+                    "title": "Jaqueta Masculina Sarja Jeans Slim Cores Clássicas Premium",
+                    "image": "https://http2.mlstatic.com/D_NQ_NP_695966-MLB85884259775_062025-O-jaqueta-masculina-sarja-jeans-slim-cores-classicas-premium.webp",
+                    "price": "R$ 162",
+                    "affiliateLink": "https://mercadolivre.com/sec/11oTdkk",
+                    "category": "roupas"
+                },
+                {
+                    "title": "Samsung Galaxy S23 Ultra 256 GB Dual Sim 8 GB de RAM 200 mpx Preto",
+                    "image": "https://http2.mlstatic.com/D_NQ_NP_895048-MLU69664239579_052023-O.webp",
+                    "price": "R$ 6.639",
+                    "affiliateLink": "https://mercadolivre.com/sec/2DNFDNe",
+                    "category": "equipamento"
+                },
+                {
+                    "title": "Filtro Cpl Polarizador Para Celular Clipe Anti Reflexo 52mm",
+                    "image": "https://http2.mlstatic.com/D_NQ_NP_838015-MLB74638611378_022024-O.webp",
+                    "price": "R$ 70",
+                    "affiliateLink": "https://mercadolivre.com/sec/1kSDcgG",
+                    "category": "equipamento"
+                },
+                {
+                    "title": "Kit Luz Softbox 50x70 Cm Contínua + Tripé 2m E27 Estúdio",
+                    "image": "https://http2.mlstatic.com/D_NQ_NP_720342-MLB89116013468_082025-O-kit-luz-softbox-50x70-cm-continua-tripe-2m-e27-estudio.webp",
+                    "price": "R$ 109",
+                    "affiliateLink": "https://mercadolivre.com/sec/2QcSFNx",
+                    "category": "equipamento"
+                },
+                {
+                    "title": "Tecido Chroma Key Fundo Infinito Estudio 1,90 X 3,00 Mts",
+                    "image": "https://http2.mlstatic.com/D_NQ_NP_743178-MLB82477853103_022025-O-tecido-chroma-key-fundo-infinito-estudio-190-x-300-mts.webp",
+                    "price": "R$ 62",
+                    "affiliateLink": "https://mercadolivre.com/sec/2tRqGpm",
+                    "category": "equipamento"
+                },
+                {
+                    "title": "Tripé Câmera Profissional Canon 1,80 Mts + Suporte Celular Preto",
+                    "image": "https://http2.mlstatic.com/D_NQ_NP_805390-MLB89594603297_082025-O.webp",
+                    "price": "R$ 122",
+                    "affiliateLink": "https://mercadolivre.com/sec/1DKJoyj",
+                    "category": "equipamento"
+                },
+                {
+                    "title": "Lampada Led Bulbo Alta Potencia 50w Elgin 6500k",
+                    "image": "https://http2.mlstatic.com/D_NQ_NP_750859-MLU72756431512_112023-O.webp",
+                    "price": "R$ 21",
+                    "affiliateLink": "https://mercadolivre.com/sec/1MuVMvx",
+                    "category": "equipamento"
+                },
+                {
+                    "title": "Gabinete Gamer Atx Rise Mode Glass 06x Black C/ 6 Fans Argb",
+                    "image": "https://http2.mlstatic.com/D_NQ_NP_924032-MLA79694139159_102024-O.webp",
+                    "price": "R$ 333",
+                    "affiliateLink": "https://mercadolivre.com/sec/2CzCRkv",
+                    "category": "setup"
+                },
+                {
+                    "title": "Redragon Kumara Single Color Preto Switch Azul",
+                    "image": "https://http2.mlstatic.com/D_NQ_NP_739915-MLA82352163058_022025-O.webp",
+                    "price": "R$ 310",
+                    "affiliateLink": "https://mercadolivre.com/sec/2UYS7qJ",
+                    "category": "setup"
+                },
+                {
+                    "title": "Mouse para jogo Infokit X-Soldado GM-700 preto",
+                    "image": "https://http2.mlstatic.com/D_NQ_NP_764216-MLU77878853769_072024-O.webp",
+                    "price": "R$ 44",
+                    "affiliateLink": "https://mercadolivre.com/sec/2fMcubW",
+                    "category": "setup"
+                },
+                {
+                    "title": "Cadeira De Escritório Ergonômica Giratória B100",
+                    "image": "https://http2.mlstatic.com/D_NQ_NP_933463-MLA89868679573_082025-O.webp",
+                    "price": "R$ 499,00",
+                    "affiliateLink": "https://mercadolivre.com/affiliate-link-14",
+                    "category": "setup"
+                },
+                {
+                    "title": "Kit 3 Cooler Fan Rgb Ventoinha 120mm Para Pc Gamer Air 12v",
+                    "image": "https://http2.mlstatic.com/D_NQ_NP_712204-MLA86248014599_062025-O.webp",
+                    "price": "R$ 75",
+                    "affiliateLink": "https://mercadolivre.com/sec/1F1S5Pm",
+                    "category": "setup"
+                },
+                {
+                    "title": "Processador AMD Ryzen 5 5500 3.6GHz 4.2GHz Max Turbo Cache 16MB AM4",
+                    "image": "https://http2.mlstatic.com/D_NQ_NP_703336-MLU72760173932_112023-O.webp",
+                    "price": "R$ 512",
+                    "affiliateLink": "https://mercadolivre.com/sec/2o8LGBi",
+                    "category": "setup"
+                },
+                {
+                    "title": "Fone De Ouvido Gamer Dj Musicos Retorno Palco In-ear C/case Cor Preto",
+                    "image": "https://http2.mlstatic.com/D_NQ_NP_920699-MLU77109826784_062024-O.webp",
+                    "price": "R$ 35",
+                    "affiliateLink": "https://mercadolivre.com/sec/2bzDMw3",
+                    "category": "setup"
+                },
+                {
+                    "title": "Suporte Para Monitor Zinnia Nimbo 100 17 Pol. A 27 Pol Preto",
+                    "image": "https://http2.mlstatic.com/D_NQ_NP_630941-MLU74352716686_022024-O.webp",
+                    "price": "R$ 455",
+                    "affiliateLink": "https://mercadolivre.com/sec/1Ww37yv",
+                    "category": "setup"
+                },
+                {
+                    "title": "Monitor Gamer LG 23,8 Pol, Full HD, LED, HDMI, 24BL550J",
+                    "image": "https://http2.mlstatic.com/D_NQ_NP_733738-MLA41540231203_042020-O.webp",
+                    "price": "R$ 899",
+                    "affiliateLink": "https://mercadolivre.com/sec/2RTY2JJ",
+                    "category": "setup"
+                },
+                {
+                    "title": "Placa de vídeo Nvidia Galax GeForce RTX 20 Series RTX 2060 SUPER OC Edition 8GB",
+                    "image": "https://http2.mlstatic.com/D_NQ_NP_917897-MLU78821277157_082024-O.webp",
+                    "price": "R$ 2.186",
+                    "affiliateLink": "https://mercadolivre.com/sec/2vBWdQv",
+                    "category": "setup"
+                },
+                {
+                    "title": "2 Memória Ddr4 Kingston Fury Superframe, 16gb, 3200mhz",
+                    "image": "https://http2.mlstatic.com/D_NQ_NP_907551-MLA86580916670_062025-O.webp",
+                    "price": "R$ 329",
+                    "affiliateLink": "https://mercadolivre.com/sec/1pDFWNT",
+                    "category": "setup"
+                },
+                {
+                    "title": "Fonte de alimentação modular Xpg Pc 650w Core Reactor",
+                    "image": "https://www.kabum.com.br/_next/image?url=https%3A%2F%2Fimages4.kabum.com.br%2Fprodutos%2Ffotos%2F514894%2Ffonte-xpg-core-reactor-ii-ve-650w-75261414_1721238006_gg.jpg&w=640&q=75",
+                    "price": "R$ 858",
+                    "affiliateLink": "https://mercadolivre.com/sec/16VvRsz",
+                    "category": "setup"
+                },
+                {
+                    "title": "Placa Mae Asus TUF Gaming A520M-PLUS II DDR4",
+                    "image": "https://http2.mlstatic.com/D_NQ_NP_746818-MLA84757264587_052025-O.webp",
+                    "price": "R$ 732",
+                    "affiliateLink": "https://mercadolivre.com/sec/154rBdn",
+                    "category": "setup"
+                },
+                {
+                    "title": "Ssd 2tb M.2 2280 Nvme Pcie Gen3 Western Digital",
+                    "image": "https://http2.mlstatic.com/D_NQ_NP_761962-MLU78659749999_082024-O.webp",
+                    "price": "R$ 835",
+                    "affiliateLink": "https://mercadolivre.com/sec/1TNMvVU",
+                    "category": "setup"
+                },
+                {
+                    "title": "Microfone Condensador Rgb Tipo C Para Gamer E Live Preto",
+                    "image": "https://down-br.img.susercontent.com/file/cn-11134207-7ras8-m1xhpv7e3jn14a@resize_w450_nl.webp",
+                    "price": "R$ 239",
+                    "affiliateLink": "https://mercadolivre.com/sec/1brYuA4",
+                    "category": "setup"
+                },
+            ]
+        };
+
+        // Função para renderizar os produtos por categoria
+        function renderProducts() {
+            const categories = {
+                'eletronicos': document.getElementById('eletronicos-carousel'),
+                'roupas': document.getElementById('roupas-carousel'),
+                'equipamento': document.getElementById('equipamento-carousel'),
+                'setup': document.getElementById('setup-carousel')
+            };
+
+            // Limpar os carrosséis antes de renderizar
+            for (const category in categories) {
+                categories[category].innerHTML = '';
+            }
+
+            // Adicionar produtos aos seus respectivos carrosséis
+            productsData.products.forEach((product, index) => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.style.animationDelay = `${index * 0.1}s`;
+                
+                productCard.innerHTML = `
+                    <div class="product-image">
+                        <img src="${product.image}" alt="${product.title}" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">${product.title}</h3>
+                        <p class="product-price">${product.price}</p>
+                        <a href="${product.affiliateLink}" target="_blank" class="btn">Ver no Mercado Livre</a>
+                    </div>
+                `;
+                
+                if (categories[product.category]) {
+                    categories[product.category].appendChild(productCard);
+                }
+            });
+        }
+
+        // Função para filtrar produtos pela pesquisa
+        function filterProducts() {
+            const searchTerm = document.getElementById('search-input').value.toLowerCase();
+            
+            const categories = {
+                'eletronicos': document.getElementById('eletronicos-carousel'),
+                'roupas': document.getElementById('roupas-carousel'),
+                'equipamento': document.getElementById('equipamento-carousel'),
+                'setup': document.getElementById('setup-carousel')
+            };
+
+            // Limpar os carrosséis antes de renderizar
+            for (const category in categories) {
+                categories[category].innerHTML = '';
+            }
+
+            // Filtrar e adicionar produtos aos seus respectivos carrosséis
+            productsData.products.forEach((product, index) => {
+                if (product.title.toLowerCase().includes(searchTerm)) {
+                    const productCard = document.createElement('div');
+                    productCard.className = 'product-card';
+                    productCard.style.animationDelay = `${index * 0.1}s`;
+                    
+                    productCard.innerHTML = `
+                        <div class="product-image">
+                            <img src="${product.image}" alt="${product.title}" loading="lazy">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">${product.title}</h3>
+                            <p class="product-price">${product.price}</p>
+                            <a href="${product.affiliateLink}" target="_blank" class="btn">Ver no Mercado Livre</a>
+                        </div>
+                    `;
+                    
+                    if (categories[product.category]) {
+                        categories[product.category].appendChild(productCard);
+                    }
+                }
+            });
+
+            // Mostrar/ocultar seções baseado nos resultados
+            for (const category in categories) {
+                const section = document.getElementById(`${category}-section`);
+                if (section) {
+                    if (categories[category].children.length > 0) {
+                        section.style.display = 'block';
+                    } else {
+                        section.style.display = 'none';
+                    }
+                }
+            }
+        }
+
+        // Função para navegar nos carrosséis
+        function scrollCarousel(carouselId, scrollAmount) {
+    const carousel = document.getElementById(carouselId);
+    carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+}
+
+// Inicializar quando o DOM estiver carregado
+document.addEventListener('DOMContentLoaded', function() {
+    renderProducts();
+    
+    // Adicionar evento de pesquisa
+    document.getElementById('search-input').addEventListener('input', filterProducts);
+    
+    // Adicionar eventos de clique nas categorias
+    const categoryItems = document.querySelectorAll('.categories-list li');
+    const headerHeight = document.querySelector('header').offsetHeight;
+    const categoriesNavHeight = document.querySelector('.categories-nav').offsetHeight;
+    const totalOffset = headerHeight + categoriesNavHeight;
+    
+    categoryItems.forEach(item => {
+        item.addEventListener('click', function() {
+            // Remover classe active de todos os itens
+            categoryItems.forEach(i => i.classList.remove('active'));
+            
+            // Adicionar classe active ao item clicado
+            this.classList.add('active');
+            
+            // Rolar até a categoria selecionada
+            const category = this.getAttribute('data-category');
+            if (category !== 'all') {
+                const section = document.getElementById(`${category}-section`);
+                if (section) {
+                    // Calcular a posição considerando os elementos fixos
+                    const elementPosition = section.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - totalOffset;
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            } else {
+                // Para "Todos", rolar para depois do hero
+                const heroHeight = document.querySelector('.hero').offsetHeight;
+                window.scrollTo({ 
+                    top: heroHeight - headerHeight, 
+                    behavior: 'smooth' 
+                });
+            }
+        });
+    });
+});
+    </script>
+</body>
+</html>
