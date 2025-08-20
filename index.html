@@ -31,13 +31,12 @@
             background-color: var(--dark-bg);
             color: var(--white);
             line-height: 1.6;
-            padding-bottom: 20px;
         }
 
         /* Header */
         header {
             background-color: rgba(18, 18, 18, 0.95);
-            padding: 1rem;
+            padding: 1.2rem 2rem;
             position: fixed;
             width: 100%;
             top: 0;
@@ -49,13 +48,12 @@
             font-size: 1.5rem;
             font-weight: 600;
             color: var(--primary-orange);
-            text-align: center;
         }
 
         /* Hero Section */
         .hero {
-            height: 50vh;
-            margin-top: 60px;
+            height: 60vh;
+            margin-top: 80px;
             background-image: 
                 linear-gradient(rgba(255, 102, 0, 0.6), rgba(18, 18, 18, 0.7)), 
                 url('skate.jpg');
@@ -66,40 +64,40 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 1.5rem;
+            padding: 2rem;
             position: relative;
         }
 
         .hero h1 {
-            font-size: 1.8rem;
+            font-size: 2.8rem;
             font-weight: 600;
             margin-bottom: 1rem;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         .hero p {
-            font-size: 1rem;
-            max-width: 100%;
-            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 2rem;
             color: var(--light-gray);
         }
 
         /* Search Bar */
         .search-container {
             width: 100%;
-            max-width: 100%;
+            max-width: 600px;
             margin: 0 auto;
             position: relative;
         }
 
         .search-bar {
             width: 100%;
-            padding: 0.8rem 1rem 0.8rem 2.5rem;
+            padding: 1rem 1.5rem 1rem 3rem;
             border-radius: 50px;
             border: none;
             background-color: var(--search-bg);
             color: var(--white);
-            font-size: 0.9rem;
+            font-size: 1rem;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
@@ -118,17 +116,17 @@
         /* Categories Navigation */
         .categories-nav {
             background-color: var(--card-bg);
-            padding: 0.8rem 1rem;
+            padding: 1rem 2rem;
             position: sticky;
-            top: 60px;
+            top: 80px;
             z-index: 800;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
         }
 
         .categories-list {
             display: flex;
-            justify-content: flex-start;
-            gap: 0.8rem;
+            justify-content: center;
+            gap: 2rem;
             list-style: none;
             overflow-x: auto;
             padding: 0.5rem 0;
@@ -145,13 +143,10 @@
             font-weight: 600;
             color: var(--light-gray);
             cursor: pointer;
-            padding: 0.5rem 0.8rem;
+            padding: 0.5rem 1rem;
             border-radius: 50px;
             transition: all 0.3s ease;
             white-space: nowrap;
-            font-size: 0.9rem;
-            position: relative;
-            z-index: 2;
         }
 
         .categories-list li.active,
@@ -162,29 +157,46 @@
 
         /* Products Section */
         .container {
-            width: 100%;
-            margin: 1.5rem auto;
-            padding: 0 1rem;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
         }
 
         .category-section {
-            margin-bottom: 2.5rem;
-            scroll-margin-top: 120px;
+            margin-bottom: 4rem;
         }
 
         .category-title {
-            font-size: 1.4rem;
+            font-size: 1.8rem;
             font-weight: 600;
-            margin-bottom: 1rem;
-            padding-left: 0.8rem;
+            margin-bottom: 1.5rem;
+            padding-left: 1rem;
             border-left: 4px solid var(--primary-orange);
         }
 
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 1rem;
-            padding: 0.5rem 0;
+        .products-carousel {
+            display: flex;
+            overflow-x: auto;
+            gap: 1.5rem;
+            padding: 1rem;
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary-orange) var(--dark-bg);
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .products-carousel::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .products-carousel::-webkit-scrollbar-track {
+            background: var(--dark-bg);
+            border-radius: 10px;
+        }
+
+        .products-carousel::-webkit-scrollbar-thumb {
+            background: var(--primary-orange);
+            border-radius: 10px;
         }
 
         .product-card {
@@ -193,12 +205,11 @@
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            min-width: 250px;
+            flex-shrink: 0;
             opacity: 0;
             transform: translateY(20px);
             animation: fadeInUp 0.6s forwards;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
         }
 
         .product-card:hover {
@@ -208,14 +219,14 @@
 
         .product-image {
             width: 100%;
-            height: 140px;
+            height: 200px;
             overflow: hidden;
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
             background-color: #fff;
-            padding: 10px;
+            padding: 15px;
         }
 
         .product-image img {
@@ -230,36 +241,33 @@
         }
 
         .product-info {
-            padding: 1rem;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
+            padding: 1.2rem;
         }
 
         .product-title {
-            font-size: 0.85rem;
+            font-size: 1rem;
             font-weight: 400;
             color: var(--light-gray);
-            margin-bottom: 0.6rem;
+            margin-bottom: 0.8rem;
+            height: 50px;
             overflow: hidden;
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
-            min-height: 40px;
         }
 
         .product-price {
-            font-size: 1.1rem;
+            font-size: 1.4rem;
             font-weight: 600;
             color: var(--white);
-            margin-bottom: 0.8rem;
+            margin-bottom: 1.2rem;
         }
 
         .btn {
             display: inline-block;
             background-color: var(--primary-orange);
             color: var(--white);
-            padding: 0.6rem 1rem;
+            padding: 0.8rem 1.5rem;
             border-radius: 6px;
             text-decoration: none;
             font-weight: 600;
@@ -268,8 +276,6 @@
             border: none;
             cursor: pointer;
             width: 100%;
-            font-size: 0.85rem;
-            margin-top: auto;
         }
 
         .btn:hover {
@@ -278,30 +284,56 @@
             box-shadow: 0 0 15px rgba(255, 102, 0, 0.4);
         }
 
+        /* Carousel Navigation */
+        .carousel-nav {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .carousel-btn {
+            background-color: var(--card-bg);
+            color: var(--white);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-btn:hover {
+            background-color: var(--primary-orange);
+        }
+
         /* Footer */
         footer {
             background-color: #0f0f0f;
-            padding: 2rem 1rem;
-            margin-top: 3rem;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
             text-align: center;
         }
 
         .disclaimer {
             color: var(--text-gray);
-            max-width: 100%;
-            margin: 0 auto 1.5rem;
-            font-size: 0.8rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            font-size: 0.9rem;
         }
 
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 1.2rem;
+            gap: 1.5rem;
         }
 
         .social-links a {
             color: var(--white);
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             transition: color 0.3s ease, transform 0.3s ease;
         }
 
@@ -322,128 +354,159 @@
             }
         }
 
-        /* Mobile Navigation */
-        .mobile-category-select {
+        /* Mobile Optimizations */
+        .carousel-indicator {
             display: none;
-            width: 100%;
-            padding: 0.8rem;
-            margin: 1rem 0;
-            background-color: var(--card-bg);
-            color: var(--white);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            font-size: 1rem;
+            justify-content: center;
+            margin-top: 1rem;
+            gap: 6px;
+        }
+
+        .indicator-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--light-gray);
+            opacity: 0.5;
+            transition: all 0.3s ease;
+        }
+
+        .indicator-dot.active {
+            opacity: 1;
+            background-color: var(--primary-orange);
+            transform: scale(1.2);
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .hero {
-                height: 45vh;
-                margin-top: 60px;
-                padding: 1rem;
-            }
-            
             .hero h1 {
-                font-size: 1.6rem;
+                font-size: 2rem;
             }
-            
+
             .hero p {
-                font-size: 0.9rem;
-            }
-            
-            .categories-list {
-                gap: 0.6rem;
-            }
-            
-            .categories-list li {
-                padding: 0.4rem 0.7rem;
-                font-size: 0.8rem;
-            }
-            
-            .container {
-                padding: 0 0.8rem;
-            }
-            
-            .category-title {
-                font-size: 1.3rem;
-            }
-            
-            .products-grid {
-                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-                gap: 0.8rem;
-            }
-            
-            .product-image {
-                height: 130px;
-            }
-            
-            .product-title {
-                font-size: 0.8rem;
-            }
-            
-            .product-price {
                 font-size: 1rem;
             }
-            
-            /* Mobile category selector */
-            .categories-nav {
+
+            .categories-list {
+                gap: 1rem;
+                justify-content: flex-start;
+            }
+
+            .categories-list li {
+                padding: 0.5rem;
+            }
+
+            /* Mobile Carousel Optimizations */
+            .products-carousel {
+                gap: 1rem;
+                padding: 0.5rem;
+                scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch;
+                scroll-padding: 0 1rem;
+            }
+
+            .product-card {
+                min-width: calc(50% - 1rem);
+                scroll-snap-align: start;
+                animation-delay: 0s !important;
+                animation: none;
+                opacity: 1;
+                transform: none;
+            }
+
+            .category-section {
+                margin-bottom: 2.5rem;
+            }
+
+            .category-title {
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .product-image {
+                height: 150px;
+            }
+
+            .product-info {
+                padding: 1rem;
+            }
+
+            .product-title {
+                height: 40px;
+                font-size: 0.9rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .product-price {
+                font-size: 1.2rem;
+                margin-bottom: 1rem;
+            }
+
+            .btn {
+                padding: 0.7rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .carousel-nav {
                 display: none;
             }
-            
-            .mobile-category-select {
-                display: block;
+
+            .carousel-indicator {
+                display: flex;
             }
         }
 
         @media (max-width: 480px) {
             .hero {
-                height: 40vh;
+                height: 50vh;
+                margin-top: 70px;
             }
-            
+
             .hero h1 {
-                font-size: 1.4rem;
+                font-size: 1.8rem;
             }
-            
+
             .logo {
                 font-size: 1.2rem;
             }
-            
-            .category-title {
-                font-size: 1.2rem;
+
+            header {
+                padding: 1rem;
             }
-            
-            .products-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 0.7rem;
+
+            .categories-nav {
+                top: 70px;
+                padding: 0.8rem 1rem;
             }
-            
+
+            .categories-list li {
+                font-size: 0.9rem;
+            }
+
+            .container {
+                margin: 1.5rem auto;
+                padding: 0 1rem;
+            }
+
             .product-card {
-                min-width: auto;
+                min-width: calc(100% - 1rem);
             }
-            
-            .product-image {
-                height: 120px;
-            }
-            
-            .product-info {
-                padding: 0.8rem;
-            }
-            
-            .product-title {
-                font-size: 0.78rem;
-                min-height: 36px;
-            }
-            
-            .btn {
-                padding: 0.5rem 0.8rem;
-                font-size: 0.8rem;
+
+            .carousel-indicator {
+                margin-top: 0.8rem;
             }
         }
 
-        @media (max-width: 360px) {
-            .products-grid {
-                grid-template-columns: 1fr;
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .product-card {
+                min-width: calc(33.333% - 1.5rem);
             }
+        }
+
+        /* Garantir que o texto das categorias fique visível */
+        .categories-list li {
+            position: relative;
+            z-index: 2;
         }
     </style>
 </head>
@@ -462,15 +525,6 @@
         </div>
     </section>
 
-    <!-- Mobile Category Selector -->
-    <select class="mobile-category-select" id="mobile-category-select">
-        <option value="all" selected>Todos os Produtos</option>
-        <option value="eletronicos">Eletrônicos</option>
-        <option value="roupas">Roupas</option>
-        <option value="equipamento">Meus Equipamentos</option>
-        <option value="setup">Meu Setup</option>
-    </select>
-
     <nav class="categories-nav">
         <ul class="categories-list" id="categories-list">
             <li class="active" data-category="all">Todos</li>
@@ -484,30 +538,50 @@
     <div class="container">
         <section class="category-section" id="eletronicos-section">
             <h2 class="category-title">Eletrônicos</h2>
-            <div class="products-grid" id="eletronicos-carousel">
+            <div class="products-carousel" id="eletronicos-carousel">
                 <!-- Produtos serão carregados via JavaScript -->
             </div>
+            <div class="carousel-nav">
+                <button class="carousel-btn" onclick="scrollCarousel('eletronicos-carousel', -300)"><i class="fas fa-chevron-left"></i></button>
+                <button class="carousel-btn" onclick="scrollCarousel('eletronicos-carousel', 300)"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="carousel-indicator" id="eletronicos-indicator"></div>
         </section>
 
         <section class="category-section" id="roupas-section">
             <h2 class="category-title">Roupas</h2>
-            <div class="products-grid" id="roupas-carousel">
+            <div class="products-carousel" id="roupas-carousel">
                 <!-- Produtos serão carregados via JavaScript -->
             </div>
+            <div class="carousel-nav">
+                <button class="carousel-btn" onclick="scrollCarousel('roupas-carousel', -300)"><i class="fas fa-chevron-left"></i></button>
+                <button class="carousel-btn" onclick="scrollCarousel('roupas-carousel', 300)"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="carousel-indicator" id="roupas-indicator"></div>
         </section>
 
         <section class="category-section" id="equipamento-section">
             <h2 class="category-title">Meu Equipamento</h2>
-            <div class="products-grid" id="equipamento-carousel">
+            <div class="products-carousel" id="equipamento-carousel">
                 <!-- Produtos serão carregados via JavaScript -->
             </div>
+            <div class="carousel-nav">
+                <button class="carousel-btn" onclick="scrollCarousel('equipamento-carousel', -300)"><i class="fas fa-chevron-left"></i></button>
+                <button class="carousel-btn" onclick="scrollCarousel('equipamento-carousel', 300)"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="carousel-indicator" id="equipamento-indicator"></div>
         </section>
 
         <section class="category-section" id="setup-section">
             <h2 class="category-title">Meu Setup</h2>
-            <div class="products-grid" id="setup-carousel">
+            <div class="products-carousel" id="setup-carousel">
                 <!-- Produtos serão carregados via JavaScript -->
             </div>
+            <div class="carousel-nav">
+                <button class="carousel-btn" onclick="scrollCarousel('setup-carousel', -300)"><i class="fas fa-chevron-left"></i></button>
+                <button class="carousel-btn" onclick="scrollCarousel('setup-carousel', 300)"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="carousel-indicator" id="setup-indicator"></div>
         </section>
     </div>
 
@@ -520,7 +594,7 @@
     </footer>
 
     <script>
-        // Dados dos produtos
+        // Dados dos produtos (em um cenário real, isso viria de um arquivo JSON externo)
         const productsData = {
             "products": [
                 {
@@ -644,7 +718,7 @@
                 },
                 {
                     "title": "Kit 3 Cooler Fan Rgb Ventoinha 120mm Para Pc Gamer Air 12v",
-                    "image": "https://http2.mlstatic.com/D_NQ_NP_712204-MLA86248014599_062025-O.webp",
+                    "image": "https://http2.mlstatic.com/D_NQ_NP_712204-MLA86248014559_062025-O.webp",
                     "price": "R$ 75",
                     "affiliateLink": "https://mercadolivre.com/sec/1F1S5Pm",
                     "category": "setup"
@@ -731,12 +805,12 @@
                 'setup': document.getElementById('setup-carousel')
             };
 
-            // Limpar os grids antes de renderizar
+            // Limpar os carrosséis antes de renderizar
             for (const category in categories) {
                 categories[category].innerHTML = '';
             }
 
-            // Adicionar produtos aos seus respectivos grids
+            // Adicionar produtos aos seus respectivos carrosséis
             productsData.products.forEach((product, index) => {
                 const productCard = document.createElement('div');
                 productCard.className = 'product-card';
@@ -757,104 +831,214 @@
                     categories[product.category].appendChild(productCard);
                 }
             });
+
+            // Atualizar indicadores de carrossel
+            updateCarouselIndicators();
         }
 
-        // Função para filtrar produtos pela pesquisa
+        // Função para atualizar os indicadores de carrossel
+        function updateCarouselIndicators() {
+            const categories = ['eletronicos', 'roupas', 'equipamento', 'setup'];
+            
+            categories.forEach(category => {
+                const carousel = document.getElementById(`${category}-carousel`);
+                const indicator = document.getElementById(`${category}-indicator`);
+                
+                if (!carousel || !indicator) return;
+                
+                // Limpar indicador atual
+                indicator.innerHTML = '';
+                
+                // Calcular número de slides
+                const productCount = carousel.children.length;
+                if (productCount === 0) return;
+                
+                // Determinar quantos produtos são visíveis por vez
+                let productsPerView = 1;
+                if (window.innerWidth >= 1024) {
+                    productsPerView = 4;
+                } else if (window.innerWidth >= 769) {
+                    productsPerView = 3;
+                } else if (window.innerWidth >= 481) {
+                    productsPerView = 2;
+                }
+                
+                // Calcular número de indicadores necessários
+                const indicatorCount = Math.ceil(productCount / productsPerView);
+                
+                // Criar indicadores
+                for (let i = 0; i < indicatorCount; i++) {
+                    const dot = document.createElement('div');
+                    dot.className = 'indicator-dot';
+                    if (i === 0) dot.classList.add('active');
+                    indicator.appendChild(dot);
+                }
+                
+                // Adicionar evento de scroll para atualizar indicador ativo
+                                    carousel.addEventListener('scroll', throttle(() => {
+                        const scrollPos = carousel.scrollLeft;
+                        const scrollWidth = carousel.scrollWidth - carousel.clientWidth;
+                        const scrollPercentage = scrollPos / scrollWidth;
+                        const activeIndicator = Math.floor(scrollPercentage * (indicatorCount - 1));
+                        
+                        // Atualizar indicadores
+                        Array.from(indicator.children).forEach((dot, index) => {
+                            if (index === activeIndicator) {
+                                dot.classList.add('active');
+                            } else {
+                                dot.classList.remove('active');
+                            }
+                        });
+                    }, 100));
+                }
+            });
+        }
+
+        // Função throttle para limitar a frequência de execução
+        function throttle(func, limit) {
+            let inThrottle;
+            return function() {
+                const args = arguments;
+                const context = this;
+                if (!inThrottle) {
+                    func.apply(context, args);
+                    inThrottle = true;
+                    setTimeout(() => inThrottle = false, limit);
+                }
+            }
+        }
+
+        // Função para rolar o carrossel
+        function scrollCarousel(carouselId, amount) {
+            const carousel = document.getElementById(carouselId);
+            if (carousel) {
+                carousel.scrollBy({ left: amount, behavior: 'smooth' });
+            }
+        }
+
+        // Função para filtrar produtos por pesquisa
         function filterProducts() {
             const searchTerm = document.getElementById('search-input').value.toLowerCase();
-
-            const categories = {
-                'eletronicos': document.getElementById('eletronicos-carousel'),
-                'roupas': document.getElementById('roupas-carousel'),
-                'equipamento': document.getElementById('equipamento-carousel'),
-                'setup': document.getElementById('setup-carousel')
-            };
-
-            // Limpar os grids antes de renderizar
-            for (const category in categories) {
-                categories[category].innerHTML = '';
-            }
-
-            // Filtrar e adicionar produtos aos seus respectivos grids
-            productsData.products.forEach((product, index) => {
+            const categoryItems = document.querySelectorAll('.categories-list li');
+            let hasVisibleProducts = false;
+            
+            // Esconder todas as seções inicialmente
+            document.querySelectorAll('.category-section').forEach(section => {
+                section.style.display = 'none';
+            });
+            
+            // Mostrar apenas categorias que tenham produtos correspondentes
+            productsData.products.forEach(product => {
                 if (product.title.toLowerCase().includes(searchTerm)) {
-                    const productCard = document.createElement('div');
-                    productCard.className = 'product-card';
-                    productCard.style.animationDelay = `${index * 0.1}s`;
-
-                    productCard.innerHTML = `
-                        <div class="product-image">
-                            <img src="${product.image}" alt="${product.title}" loading="lazy">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">${product.title}</h3>
-                            <p class="product-price">${product.price}</p>
-                            <a href="${product.affiliateLink}" target="_blank" class="btn">Ver no Mercado Livre</a>
-                        </div>
-                    `;
-
-                    if (categories[product.category]) {
-                        categories[product.category].appendChild(productCard);
+                    const section = document.getElementById(`${product.category}-section`);
+                    if (section) {
+                        section.style.display = 'block';
+                        hasVisibleProducts = true;
                     }
                 }
             });
-
-            // Mostrar/ocultar seções baseado nos resultados
-            for (const category in categories) {
-                const section = document.getElementById(`${category}-section`);
-                if (section) {
-                    if (categories[category].children.length > 0) {
-                        section.style.display = 'block';
-                    } else {
-                        section.style.display = 'none';
-                    }
-                }
+            
+            // Se não houver resultados, mostrar mensagem
+            if (!hasVisibleProducts) {
+                // Criar mensagem de nenhum resultado encontrado
+                const noResults = document.createElement('div');
+                noResults.className = 'no-results';
+                noResults.innerHTML = `
+                    <div style="text-align: center; padding: 3rem;">
+                        <i class="fas fa-search" style="font-size: 3rem; margin-bottom: 1rem; color: var(--text-gray);"></i>
+                        <h3>Nenhum produto encontrado</h3>
+                        <p>Tente usar termos de pesquisa diferentes</p>
+                    </div>
+                `;
+                
+                // Limpar container e adicionar mensagem
+                const container = document.querySelector('.container');
+                container.innerHTML = '';
+                container.appendChild(noResults);
             }
+            
+            // Atualizar categorias ativas
+            categoryItems.forEach(item => {
+                item.classList.remove('active');
+            });
+            categoryItems[0].classList.add('active'); // Ativar "Todos"
         }
 
-        // Função para navegar para uma categoria
-        function scrollToCategory(category) {
+        // Função para filtrar por categoria
+        function filterByCategory(category) {
+            if (category === 'all') {
+                // Mostrar todas as seções
+                document.querySelectorAll('.category-section').forEach(section => {
+                    section.style.display = 'block';
+                });
+            } else {
+                // Esconder todas as seções
+                document.querySelectorAll('.category-section').forEach(section => {
+                    section.style.display = 'none';
+                });
+                
+                // Mostrar apenas a categoria selecionada
+                const section = document.getElementById(`${category}-section`);
+                if (section) {
+                    section.style.display = 'block';
+                }
+            }
+            
+            // Atualizar indicador de categoria ativa
+            document.querySelectorAll('.categories-list li').forEach(item => {
+                item.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Rolar para a seção selecionada
             if (category !== 'all') {
                 const section = document.getElementById(`${category}-section`);
                 if (section) {
                     section.scrollIntoView({ behavior: 'smooth' });
                 }
             } else {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                window.scrollTo({ top: document.querySelector('.container').offsetTop - 100, behavior: 'smooth' });
             }
         }
 
-        // Inicializar quando o DOM estiver carregado
+        // Inicializar a página quando carregada
         document.addEventListener('DOMContentLoaded', function() {
+            // Renderizar produtos
             renderProducts();
             
-            // Adicionar evento de pesquisa
+            // Adicionar event listeners
             document.getElementById('search-input').addEventListener('input', filterProducts);
             
-            // Adicionar eventos de clique nas categorias (desktop)
-            const categoryItems = document.querySelectorAll('.categories-list li');
-            categoryItems.forEach(item => {
+            // Adicionar event listeners para as categorias
+            document.querySelectorAll('.categories-list li').forEach(item => {
                 item.addEventListener('click', function() {
-                    // Remover classe active de todos os itens
-                    categoryItems.forEach(i => i.classList.remove('active'));
-                    
-                    // Adicionar classe active ao item clicado
-                    this.classList.add('active');
-                    
-                    // Rolar até a categoria selecionada
-                    const category = this.getAttribute('data-category');
-                    scrollToCategory(category);
+                    filterByCategory(this.getAttribute('data-category'));
                 });
             });
             
-            // Adicionar evento para o seletor mobile
-            const mobileSelect = document.getElementById('mobile-category-select');
-            if (mobileSelect) {
-                mobileSelect.addEventListener('change', function() {
-                    scrollToCategory(this.value);
+            // Adicionar event listeners para os indicadores (mobile)
+            document.querySelectorAll('.carousel-indicator').forEach(indicator => {
+                indicator.addEventListener('click', function(e) {
+                    if (e.target.classList.contains('indicator-dot')) {
+                        const dots = Array.from(this.children);
+                        const dotIndex = dots.indexOf(e.target);
+                        const carouselId = this.id.replace('-indicator', '-carousel');
+                        const carousel = document.getElementById(carouselId);
+                        
+                        if (carousel) {
+                            const scrollWidth = carousel.scrollWidth;
+                            const itemWidth = scrollWidth / dots.length;
+                            carousel.scrollTo({ left: itemWidth * dotIndex, behavior: 'smooth' });
+                        }
+                    }
                 });
-            }
+            });
         });
+
+        // Atualizar indicadores quando a janela for redimensionada
+        window.addEventListener('resize', throttle(function() {
+            updateCarouselIndicators();
+        }, 250));
     </script>
 </body>
 </html>
